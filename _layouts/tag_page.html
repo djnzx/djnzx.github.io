@@ -1,0 +1,9 @@
+---
+layout: default
+---
+<h2>Things tagged with the <code style ="font-size: 20px;" class="highligher-rouge">{{ page.tag }}</code></h2>
+
+{% assign posts = site.tags[page.tag] %}
+{% for post in posts %}
+   {% include tagged-item.html %}
+{% endfor %}

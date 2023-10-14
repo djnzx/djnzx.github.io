@@ -1,0 +1,6 @@
+Page Tags:
+{% for tag in page.tags %}
+    <a href="/tag/{{ tag }}">
+        <code class="highligher-rouge"><nobr>{{ tag }}</nobr></code>
+    </a>
+{% endfor %}

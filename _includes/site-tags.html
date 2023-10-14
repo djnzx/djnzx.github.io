@@ -1,0 +1,7 @@
+Site Tags:
+{% for stag in site.tags %}
+{% assign tag = stag[0]  %}
+    <a href="/tag/{{ tag }}">
+        <code class="highligher-rouge"><nobr>{{ tag }}</nobr></code>
+    </a>
+{% endfor %}

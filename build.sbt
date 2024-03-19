@@ -1,0 +1,43 @@
+lazy val `blog-processor` = (project in file("blog-processor"))
+  .settings(
+    organization := "alexr",
+    scalaVersion := "2.13.12",
+    javacOptions ++= Seq("-source", "17") ++ Seq("-target", "17"),
+    scalacOptions ++= Seq(
+      "-encoding",
+      "UTF-8",
+      "-feature",
+      "-deprecation",
+      "-unchecked",
+      "-language:postfixOps",
+      "-language:higherKinds",
+      "-Ymacro-annotations",
+      "-Wconf:cat=other-match-analysis:error",
+      "-language:existentials",
+      "-Ywarn-numeric-widen",
+      "-Ywarn-value-discard",
+      "-Ywarn-dead-code",
+      "-explaintypes"
+    ),
+    libraryDependencies ++= Seq(
+      compilerPlugin("org.typelevel"  %% "kind-projector"     % "0.13.2" cross CrossVersion.full),
+      compilerPlugin("com.olegpy"     %% "better-monadic-for" % "0.3.1"),
+      compilerPlugin("org.augustjune" %% "context-applied"    % "0.1.4"),
+      "co.fs2"                     %% "fs2-io"                    % "3.9.4",
+      "com.beachape"               %% "enumeratum"                % "1.7.3",
+      "com.beachape"               %% "enumeratum-circe"          % "1.7.3",
+      "com.beachape"               %% "enumeratum-cats"           % "1.7.3",
+      "com.beachape"               %% "enumeratum-scalacheck"     % "1.7.3",
+      "io.circe"                   %% "circe-parser"              % "0.14.6",
+      "io.circe"                   %% "circe-generic-extras"      % "0.14.3",
+      "io.circe"                   %% "circe-fs2"                 % "0.14.1",
+      "org.scalatest"              %% "scalatest"                 % "3.2.17",
+      "org.scalacheck"             %% "scalacheck"                % "1.17.0",
+      "org.scalatestplus"          %% "scalacheck-1-17"           % "3.2.17.0",
+      "com.github.alexarchambault" %% "scalacheck-shapeless_1.16" % "1.3.1",
+      "com.lihaoyi"                %% "pprint"                    % "0.8.1",
+    ),
+    mdocIn := new File("raw"),
+    mdocOut := new File("_posts"),
+  )
+  .enablePlugins(MdocPlugin)

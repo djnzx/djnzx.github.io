@@ -11,7 +11,7 @@ Scala has an amazing library do deal with enums: `enumeratum`
 
 it gives great declarative enum naming:
 
-```scala
+```scala mdoc
 import enumeratum.EnumEntry._
 import enumeratum._
 
@@ -24,11 +24,9 @@ object Color extends Enum[Color] {
 ```
 By mixing `Lowercase` it automatically provides name transformation based on the object name
 and the `Lowercase` rule
-```scala
+```scala mdoc
 val c1 = Color.Red.entryName
-// c1: String = "red"
 val c2 = Color.Green.entryName
-// c2: String = "green"
 ```
 By changing `Lowercase` to `Uppercase`
 we will get another name transformer and name as a result
@@ -46,7 +44,7 @@ but what if, maybe due to some weird requirements, maybe due to the kind of lega
 you need to have `red` and `GREEN`?
 Library copes with that elegantly!
 Simply override method `entryName`
-```scala
+```scala mdoc
 import enumeratum.EnumEntry._
 import enumeratum._
 
@@ -62,9 +60,7 @@ object Color2 extends Enum[Color2] {
 `Lowercase` rule will be applied to all elements
 but to other, for which we need another rule, we simply override `withName` method.
 And we get
-```scala
+```scala mdoc
 val c3 = Color2.Red.entryName
-// c3: String = "red"
 val c4 = Color2.Green.entryName
-// c4: String = "GREEN"
 ```
